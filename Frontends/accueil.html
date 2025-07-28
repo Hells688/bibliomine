@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bibliomine – Accueil</title>
+
+  <!-- Font moderne -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1470&q=80')
+                  no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.7);
+      padding: 1rem 0;
+      z-index: 10;
+    }
+    header .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    header .logo {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 1.5rem; font-weight: 600; color: #FFD700;
+    }
+    header .logo img {
+      height: 32px;
+    }
+    header .link-donate {
+      margin-right: 1rem;
+      color: #FFD700; text-decoration: none; font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    header .link-donate:hover {
+      text-decoration: underline;
+    }
+    header .btn-logout {
+      padding: 0.5rem 1rem;
+      background: #FFD700; color: #121212;
+      border: none; border-radius: 6px; font-weight: 500;
+      cursor: pointer; transition: background 0.3s;
+    }
+    header .btn-logout:hover {
+      background: #e6c200;
+    }
+
+    .container {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 6rem auto 2rem; /* espace sous le header */
+      padding: 0 2rem;
+    }
+    h1 {
+      font-size: 2.25rem; text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ========== Documents récents ========== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .doc-card {
+      background: rgba(34,34,34,0.85);
+      padding: 1.5rem; border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .doc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+    .doc-card h3 {
+      margin-bottom: 0.5rem; font-size: 1.25rem;
+    }
+    .doc-meta {
+      font-size: 0.9rem; color: #bbb; margin-bottom: 1rem;
+    }
+    .doc-actions a {
+      display: block; padding: 0.75rem;
+      background: #FFD700; color: #121212;
+      text-align: center; border-radius: 6px;
+      text-decoration: none; font-weight: 500;
+      transition: background 0.3s;
+    }
+    .doc-actions a:hover {
+      background: #e6c200;
+    }
+
+    /* ========== Boutons bas de page ========== */
+    .footer-actions {
+      display: flex; justify-content: center; gap: 1rem;
+      margin: 2rem 0;
+    }
+    .footer-actions a {
+      padding: 0.75rem 1.5rem;
+      background: #FFD700; color: #121212;
+      text-decoration: none; border-radius: 6px;
+      font-weight: 500; transition: background 0.3s;
+    }
+    .footer-actions a:hover {
+      background: #e6c200;
+    }
+
+    /* ========== Description & mention légale ========== */
+    .description {
+      text-align: center; color: #ddd;
+      font-size: 1rem; margin-bottom: 1rem;
+    }
+    .legal-card {
+      text-align: center; color: #bbb;
+      font-size: 0.9rem; margin-top: 1rem;
+    }
+    .legal-card p + p {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+
+<body data-page="accueil">
+  <!-- NAVBAR -->
+  <header>
+    <div class="inner">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/books.png" alt="Logo Bibliomine"/>
+        Bibliomine
+      </div>
+      <div>
+        <a href="#" class="link-donate" onclick="showDonate()">Faire un don</a>
+        <button class="btn-logout" onclick="logout()">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Documents récents</h1>
+    <div id="recent-grid" class="grid"></div>
+
+    <div class="footer-actions">
+      <a href="ajouter.html">Ajouter un document</a>
+      <a href="bibliotheque.html">Voir la bibliothèque</a>
+    </div>
+
+    <p class="description">
+      Bienvenue sur Bibliomine, la plateforme collaborative des rapports et études en génie minier.
+      Consultez, partagez et archivez les travaux des étudiants pour enrichir la recherche de demain.
+    </p>
+
+    <div class="legal-card">
+      <p>© 2025 Bibliomine – Tous droits réservés.</p>
+      <p>Développé par Gaël Teedwende Glovice OUOBA</p>
+    </div>
+  </div>
+
+  <!-- Bundle JavaScript central -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
