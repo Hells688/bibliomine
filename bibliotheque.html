@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bibliothèque – Bibliomine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box }
+    html, body {
+      height:100%; font-family:'Inter',sans-serif;
+      background: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1470&q=80')
+                  no-repeat center center fixed;
+      background-size:cover; color:#fff; position:relative;
+    }
+    body::before {
+      content:''; position:absolute; inset:0; background:rgba(0,0,0,0.6);
+    }
+    .container {
+      position:relative; z-index:1;
+      max-width:1200px; margin:2rem auto; padding:0 2rem;
+      background:rgba(34,34,34,0.85); border-radius:10px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.5);
+    }
+    h1 {
+      text-align:center; font-size:2rem; margin:1.5rem 0;
+    }
+    .actions {
+      display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between;
+      margin-bottom:1.5rem;
+    }
+    .actions input, .actions select {
+      flex:1; min-width:200px; padding:.75rem 1rem;
+      border:none; border-radius:6px; background:#222; color:#fff;
+      font-size:1rem;
+    }
+    .grid {
+      display:grid; gap:1rem;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      margin-bottom:1.5rem;
+    }
+    .doc-card {
+      background:rgba(34,34,34,0.9); padding:1rem; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.3);
+      transition:transform .2s,box-shadow .2s;
+    }
+    .doc-card:hover {
+      transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.5);
+    }
+    .doc-card h2 { font-size:1.1rem; margin-bottom:.5rem;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .doc-meta { font-size:.85rem; color:#bbbbbb; margin-bottom:1rem; }
+    .doc-actions a {
+      display:block; margin-top:auto; padding:.6rem;
+      background:#FFD700; color:#121212;
+      text-decoration:none; font-weight:bold; text-align:center;
+      border-radius:6px; transition:background .3s;
+    }
+    .doc-actions a:hover { background:#e6c200; }
+    .pagination {
+      display:flex; gap:.5rem; justify-content:center; margin-bottom:2rem;
+    }
+    .pagination a {
+      padding:.5rem .8rem; background:rgba(255,255,255,0.2);
+      color:#fff; text-decoration:none; border-radius:4px; transition:background .3s;
+    }
+    .pagination a.active, .pagination a:hover {
+      background:#FFD700; color:#121212;
+    }
+    .footer-actions {
+      display:flex; justify-content:center; gap:1rem; margin-bottom:2rem;
+    }
+    .footer-actions a {
+      padding:.75rem 1.5rem; background:#FFD700;
+      color:#121212; text-decoration:none; border-radius:6px;
+      font-weight:500; transition:background .3s;
+    }
+    .footer-actions a:hover { background:#e6c200; }
+    .legal-card {
+      text-align:center; color:#bbb; font-size:.9rem; margin:2rem 0;
+    }
+  </style>
+</head>
+<body data-page="bibliotheque">
+  <div class="container">
+    <h1>Bibliothèque</h1>
+    <div class="actions">
+      <input id="search"         type="text"   placeholder="Rechercher…"/>
+      <select id="filter-year"><option value="">Toutes années</option></select>
+      <select id="filter-niveau"><option value="">Tous niveaux</option></select>
+    </div>
+    <div id="grid" class="grid"></div>
+    <div id="pagination" class="pagination"></div>
+    <div class="footer-actions">
+      <a href="accueil.html">Accueil</a>
+      <a href="ajouter.html">Ajouter un document</a>
+    </div>
+    <div class="legal-card">
+      <p>© 2025 Bibliomine – Tous droits réservés.</p>
+      <p>Développé par Gaël Teedwende Glovice OUOBA</p>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
